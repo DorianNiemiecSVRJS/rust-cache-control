@@ -85,6 +85,10 @@ impl CacheControl {
                     Some(secs) => ret.max_age = Some(Duration::from_secs(secs)),
                     None => return None,
                 },
+                "s-maxage" => match val.and_then(|v| v.parse().ok()) {
+                    Some(secs) => ret.s_max_age = Some(Duration::from_secs(secs)),
+                    None => return None,
+                },
                 "max-stale" => match val.and_then(|v| v.parse().ok()) {
                     Some(secs) => ret.max_stale = Some(Duration::from_secs(secs)),
                     None => return None,
